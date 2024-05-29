@@ -1,0 +1,43 @@
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (Mono Auto Generated)
+mono_crash.*
+
+# User-specific files (VSCode)
+.vscode/*
+
+# Auto-generated files
+.vs/
+
+# Build directories
+bin/
+obj/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Azure Pipelines
+.terraform/
+.terraform/plugins/
+
+# MSBuild binary log
+*.binlog
+
+# NPM packages
+node_modules/
+
+# Yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# End of https://www.toptal.com/developers/gitignore/api/visualstudio

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestionProyectos.Shared.Entities
 {
-    public class TareaE
+    public class TareaE 
     {
         public int TareaId { get; set; }
 
@@ -24,6 +24,5 @@ namespace GestionProyectos.Shared.Entities
 
         public DateOnly? FechaModificacion { get; set; }
 
-        public ProyectoE? Proyecto { get; set; }
     }
 }

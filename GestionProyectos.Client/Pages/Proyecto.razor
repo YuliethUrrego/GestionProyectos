@@ -1,0 +1,72 @@
+﻿@page "/proyecto"
+@page "/proyecto/{idEditar}"
+
+@using GestionProyectos.Shared.Entities;
+@using GestionProyectos.Client.Services;
+@using System;
+
+@inject IModalService modal;
+@inject IProyecto proyectoService;
+@inject NavigationManager navegacion;
+
+<EditForm Model="proyecto" OnValidSubmit="OnValidSubmit" class="modal-personalizado">
+    <div>
+        <label class="form-label">Nombre Proyecto</label>
+        <InputText class="form-control" @bind-Value="proyecto.Nombre" placeholder="Ingrese el nombre del proyecto"></InputText>
+        <ValidationMessage For="@(() => proyecto.Nombre)"></ValidationMessage>
+    </div>
+    <div>
+        <label class="form-label">Descripción</label>
+        <InputText class="form-control" @bind-Value="proyecto.Descripcion" placeholder="Seleccione un tipo de identificación"></InputText>
+        <ValidationMessage For="@(() => proyecto.Descripcion)"></ValidationMessage>
+    </div>
+    <div>
+        <label class="form-label">Tipo Proyecto</label>
+        <InputText class="form-control" @bind-Value="proyecto.Tipo" placeholder="Ingrese el tipo del proyecto"></InputText>
+        <ValidationMessage For="@(() => proyecto.Tipo)"></ValidationMessage>
+    </div>
+    <div>
+        <label class="form-label">Fecha Creación</label>
+        <InputDate class="form-control" @bind-Value="proyecto.FechaCreacion" placeholder=""></InputDate>
+        <ValidationMessage For="@(() => proyecto.FechaCreacion)"></ValidationMessage>
+    </div>
+
+    <div class="mt-4">
+
+        <button class="btn btn-warning w-50 btn-aceptar mr-4" type="submit">
+            ACEPTAR
+        </button>
+        <a class="btn btn-warning w-30 btn-cancelar" href="proyectos">CANCELAR</a>
+    </div>
+</EditForm>
+
+
+@code {
+    [Parameter]
+    public string idEditar { get; set; } = null;
+
+    ProyectoE proyecto = new ProyectoE();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (idEditar != null)
+        {
+            // proyecto = await proyectoService.Buscar(idEditar);
+        }
+        else
+        {
+            proyecto.FechaCreacion = DateOnly.FromDateTime(DateTime.Now);
+        }
+    }
+
+    private async Task OnValidSubmit()
+    {
+        string idDevuelto = null;
+
+        // TODO: guardar el usuario
+        /*idDevuelto = await proyectoService.Editar(actor);*/
+
+        navegacion.NavigateTo("/proyectos");
+    }
+
+}

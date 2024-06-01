@@ -75,3 +75,65 @@
 code {
     color: #c02d76;
 }
+
+.btn-aceptar {
+    background-color: #FEAF00 !important;
+    color: #000000 !important;
+}
+
+.btn-cancelar {
+    background-color: rgba(254, 175, 0, 0.3) !important;
+    color: #000000 !important;
+}
+
+.sidebar-personalizado {
+    background-color: #F2EAE1 !important;
+}
+
+.navbar-personalizado {
+    background-color: #F2EAE1 !important;
+}
+
+.modal-personalizado {
+    border-radius: 25px !important;
+}
+
+.navmenu-personalizado {
+    background-color: #F2EAE1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.nav-personalizado{
+    width: 100% !important;
+}
+
+.nav-link-personalizado:focus {
+    background-color: #FEAF00 !important;
+}
+
+.nav-link-personalizado:hover {
+    background-color: #FEAF00 !important;
+}
+
+.nav-link-personalizado {
+    background-color: #F2EAE1 !important;
+    color : #000000 !important;
+    font-size: 17px;
+    display:flex !important;
+    justify-content: center !important;    
+    align-items: center !important;
+}
+.nav-link-activo {
+    background-color: #FEAF00 !important;
+}
+
+.menu-opciones{
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+}
+.espaciar{
+    margin-right: 10px;
+    color: #ffffff;
+}

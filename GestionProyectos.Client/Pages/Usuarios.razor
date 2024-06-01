@@ -1,14 +1,19 @@
 ﻿@page "/usuarios"
 
-@using GestionProyectos.Shared.Entities
+@using GestionProyectos.Shared.Entities;
 @using CurrieTechnologies.Razor.SweetAlert2;
 @using GestionProyectos.Client.Services;
 
 @inject SweetAlertService Swal;
+@inject IModalService modal;
 @inject IUsuario usuarioService;
 
 <h3>Usuarios</h3>
-<a class="btn btn-success btn-sm mb-3" href="Usuario">Nuevo Usuario</a>
+<div class="menu-opciones">
+    <a class="btn btn-warning mb-3 mr-3 btn-aceptar espaciar" @onclick="abrirModalProyecto">Asignar Usuario a Proyecto</a>
+    <a class="btn btn-warning mb-3 mr-3 btn-aceptar espaciar" @onclick="abrirModalRoles">Crear Rol</a>
+    <a class="btn btn-warning mb-3 mr-3 btn-aceptar espaciar" @onclick="abrirModalCrear">Crear Usuario</a>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -53,5 +58,41 @@
     protected override async Task OnInitializedAsync()
     {
         listaUsuario = await usuarioService.Lista();
+    }
+
+    private async Task abrirModalCrear()
+    {
+        var opciones = new ModalOptions()
+            {
+                DisableBackgroundCancel = true,
+                HideCloseButton= true,
+            };
+        var form = modal.Show<Usuario>("Crear Usuario", opciones);
+        var result = await form.Result;
+
+    }
+
+    private async Task abrirModalRoles()
+    {
+        var opciones = new ModalOptions()
+            {
+                DisableBackgroundCancel = true,
+                HideCloseButton = true,
+            };
+        var form = modal.Show<UsuarioRol>("Crear Roles", opciones);
+        var result = await form.Result;
+
+    }
+
+    private async Task abrirModalProyecto()
+    {
+        var opciones = new ModalOptions()
+            {
+                DisableBackgroundCancel = true,
+                HideCloseButton = true,
+            };
+        var form = modal.Show<UsuarioProyecto>("Asignar Usuario a Proyecto", opciones);
+        var result = await form.Result;
+
     }
 }

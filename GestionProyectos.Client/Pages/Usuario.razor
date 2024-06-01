@@ -1,0 +1,70 @@
+﻿@page "/usuario"
+
+@using GestionProyectos.Shared.Entities;
+@using GestionProyectos.Client.Services;
+
+@inject IModalService modal;
+@inject IUsuario usuarioService;
+@inject NavigationManager navegacion;
+
+<EditForm Model="usuario" OnValidSubmit="OnValidSubmit" class="modal-personalizado">
+    <div>
+        <label class="form-label">Nombre</label>
+        <InputText class="form-control" @bind-Value="usuario.PersonaE.Nombre" placeholder="Ingrese el nombre completo"></InputText>
+        <ValidationMessage For="@(() => usuario.PersonaE.Nombre)"></ValidationMessage>
+    </div>
+    <div>
+        <label class="form-label">Tipo identificación</label>
+        <InputSelect class="form-control" @bind-Value="usuario.PersonaE.TipoIdentificacion">
+            <option value="">Seleccione un tipo de identificación</option>
+            <option value=1> Cedula </option>
+            <option value=2> Pasaporte </option>
+            <option value=3> RUC </option>
+        </InputSelect>
+        <ValidationMessage For="@(() => usuario.PersonaE.TipoIdentificacion)"></ValidationMessage>
+    </div>
+    <div>
+        <label class="form-label">Nro identificación</label>
+        <InputNumber class="form-control" @bind-Value="usuario.PersonaE.Cedula" placeholder="Seleccione un tipo de identificación"></InputNumber>
+        <ValidationMessage For="@(() => usuario.PersonaE.Cedula)"></ValidationMessage>
+    </div>
+    <div>
+        <label class="form-label">Email</label>
+        <InputText class="form-control" @bind-Value="usuario.PersonaE.Email" placeholder="Ingrese el email"></InputText>
+        <ValidationMessage For="@(() => usuario.PersonaE.Email)"></ValidationMessage>
+    </div>
+    <div>
+        <label class="form-label">Contraseña</label>
+        <InputText class="form-control" @bind-Value="usuario.PersonaE.Contrasenia" placeholder="Ingrese la contraseña"></InputText>
+        <ValidationMessage For="@(() => usuario.PersonaE.Contrasenia)"></ValidationMessage>
+    </div>
+    @* <div>
+        <label class="form-label">Rol</label>
+        <InputNumber class="form-control" @bind-Value="usuario.PersonaE.rol"></InputNumber>
+        <ValidationMessage For="@(() => usuario.Fkidrol)"></ValidationMessage>
+    </div> *@
+    <div class="mt-4">
+    
+        <button class="btn btn-warning w-50 btn-aceptar mr-4" type="submit">
+            ACEPTAR
+        </button>
+        <a class="btn btn-warning w-30 btn-cancelar" href="usuarios">CANCELAR</a>
+    </div>
+</EditForm>
+
+
+@code {
+
+    UsuarioE usuario = new UsuarioE { PersonaE = new PersonaE() };
+
+    private async Task OnValidSubmit()
+    {
+        string idDevuelto = null;
+
+        // TODO: guardar el usuario
+        /*idDevuelto = await usuarioService.Editar(actor);*/
+
+        navegacion.NavigateTo("/usuarios");
+    }
+
+}

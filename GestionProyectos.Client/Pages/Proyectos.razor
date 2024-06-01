@@ -1,0 +1,86 @@
+﻿@page "/proyectos"
+
+@using GestionProyectos.Shared.Entities;
+@using CurrieTechnologies.Razor.SweetAlert2;
+@using GestionProyectos.Client.Services;
+
+@inject SweetAlertService Swal;
+@inject IModalService modal;
+@inject IProyecto proyectoService;
+
+<h3>Proyectos</h3>
+<div class="menu-opciones">
+    <a class="btn btn-warning mb-3 mr-3 btn-aceptar espaciar" @onclick="abrirModalCrear">Crear Proyecto</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre Proyecto</th>
+            <th>Descripción</th>
+            <th>Tipo Proyecto</th>
+            <th>Estado proyecto</th>
+            <th>Fecha Creación</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (listaProyectos == null)
+        {
+            <tr>
+                <td colspan="3" align="center">
+                    <img style="width:50px src="https://media.tenor.com/On7kvXhzmlAAAAj/loading-gif.gif" />
+                </td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in listaProyectos)
+            {
+                <tr>
+                    <td>@(item.Nombre)</td>
+                    <td>@item.Descripcion</td>
+                    <td>@item.Tipo</td>
+                    <td>@item.Estado</td>
+                    <td>@item.FechaCreacion</td>
+                    <td>Editar</td>
+                    <td>Eliminar</td>
+                    
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@code {
+    List<ProyectoE>? listaProyectos = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //listaProyectos = await proyectoService.Lista();
+    }
+
+    private async Task abrirModalCrear()
+    {
+        var opciones = new ModalOptions()
+            {
+                DisableBackgroundCancel = true,
+                HideCloseButton = true,
+            };
+        var form = modal.Show<Proyecto>("Crear Proyecto", opciones);
+        var result = await form.Result;
+
+    }
+
+    private async Task abrirModalEditar()
+    {
+        var opciones = new ModalOptions()
+            {
+                DisableBackgroundCancel = true,
+                HideCloseButton = true,
+            };
+        var form = modal.Show<Proyecto>("Modificar Proyecto", opciones);
+        var result = await form.Result;
+
+    }
+}

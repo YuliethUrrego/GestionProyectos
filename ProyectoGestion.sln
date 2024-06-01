@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionProyectos.Server", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionProyectos.Shared", "GestionProyectos.Shared\GestionProyectos.Shared.csproj", "{28360F40-3B69-4B64-B423-9F7F2521EEF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionProyectos.Client", "GestionProyectos.Client\GestionProyectos.Client.csproj", "{64F0677E-8513-4FA3-91FC-A3C05B1E3BAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionProyectos.Client", "GestionProyectos.Client\GestionProyectos.Client.csproj", "{64F0677E-8513-4FA3-91FC-A3C05B1E3BAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

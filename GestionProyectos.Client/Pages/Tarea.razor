@@ -1,0 +1,97 @@
+﻿@page "/tarea"
+@page "/tarea/{idEditar}"
+
+@using GestionProyectos.Shared.Entities;
+@using GestionProyectos.Client.Services;
+@using System;
+
+@inject IModalService modal;
+@inject ITarea tareaService;
+@inject IProyecto proyectoService;
+@inject NavigationManager navegacion;
+
+<EditForm Model="tarea" OnValidSubmit="OnValidSubmit" class="modal-personalizado">
+    <div>
+        <label class="form-label">Proyecto</label>
+        <InputText class="form-control" @bind-Value="tarea.Proyecto.Nombre" placeholder="Ingrese el proyecto"></InputText>
+        <ValidationMessage For="@(() => tarea.Descripcion)"></ValidationMessage>
+    </div>
+    <div>
+        <label class="form-label">Proyecto</label>
+        <InputSelect class="form-control" @bind-Value="tarea.ProyectoId">
+            <option value="">Seleccionar un proyecto</option>
+            @foreach (var item in listaProyectos)
+            {
+                <option value="@item.ProyectoId">@item.Nombre</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => tarea.ProyectoId)"></ValidationMessage>
+    </div>
+    <div>
+        <label class="form-label">Descripción</label>
+        <InputText class="form-control" @bind-Value="tarea.Descripcion" placeholder="Ingrese una descripción"></InputText>
+        <ValidationMessage For="@(() => tarea.Descripcion)"></ValidationMessage>
+    </div>
+    <div>
+        <label class="form-label">Estado</label>
+        <InputSelect class="form-control" @bind-Value="tarea.Estado" placeholder="Seleccione un estado">
+            <option value="">Seleccione un estado</option>
+            <option value=1>Activo</option>
+            <option value=2>En Proceso</option>
+            <option value=3>Finalizado</option>
+        </InputSelect>
+        <ValidationMessage For="@(() => tarea.Estado)"></ValidationMessage>
+    </div>
+    <div>
+        <label class="form-label">Notas</label>
+        <InputText class="form-control" @bind-Value="tarea.Notas" placeholder="Ingrese nota"></InputText>
+        <ValidationMessage For="@(() => tarea.Notas)"></ValidationMessage>
+    </div>
+    <div>
+        <label class="form-label">Fecha Creación</label>
+        <InputDate class="form-control" @bind-Value="tarea.FechaCreacion" placeholder=""></InputDate>
+        <ValidationMessage For="@(() => tarea.FechaCreacion)"></ValidationMessage>
+    </div>
+
+    <div class="mt-4">
+
+        <button class="btn btn-warning w-50 btn-aceptar mr-4" type="submit">
+            ACEPTAR
+        </button>
+        <a class="btn btn-warning w-30 btn-cancelar" href="tareas">CANCELAR</a>
+    </div>
+</EditForm>
+
+
+@code {
+    [Parameter]
+    public string idEditar { get; set; } = null;
+
+    TareaE tarea = new TareaE();
+    List<ProyectoE> listaProyectos = new List<ProyectoE>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (idEditar != null)
+        {
+            //tarea = await tareaService.Buscar(idEditar);
+        }
+        else
+        {
+            tarea.FechaCreacion = DateOnly.FromDateTime(DateTime.Now);
+            tarea.Proyecto = new ProyectoE();
+        }
+    }
+
+    private async Task OnValidSubmit()
+    {
+        string idDevuelto = null;
+
+        // TODO: guardar el usuario
+        /*idDevuelto = await usuarioService.Editar(actor);*/
+
+        navegacion.NavigateTo("/tareas");
+    }
+
+}
+

@@ -1,0 +1,98 @@
+﻿@page "/tareas"
+
+@using GestionProyectos.Shared.Entities;
+@using CurrieTechnologies.Razor.SweetAlert2;
+@using GestionProyectos.Client.Services;
+
+@inject SweetAlertService Swal;
+@inject IModalService modal;
+@inject ITarea tareaService;
+
+<h3>Tareas</h3>
+<div class="menu-opciones">
+    <a class="btn btn-warning mb-3 mr-3 btn-aceptar espaciar" @onclick="abrirModalCrear">Crear Tarea</a>
+    <a class="btn btn-warning mb-3 mr-3 btn-aceptar espaciar" @onclick="abrirModalConsultar">Consultar Tarea</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Proyecto</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Notas</th>
+            <th>Fecha Creación</th>
+            <th>Fecha Modificación</th>
+            <th>Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (listaTareas == null)
+        {
+            <tr>
+                <td colspan="3" align="center">
+                    <img style="width:50px src="https://media.tenor.com/On7kvXhzmlAAAAj/loading-gif.gif" />
+                </td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in listaTareas)
+            {
+                <tr>
+                    <td>@item.Proyecto.Nombre</td>
+                    <td>@item.Descripcion</td>
+                    <td>@item.Estado</td>
+                    <td>@item.Notas</td>
+                    <td>@item.FechaCreacion</td>
+                    <td>@item.FechaModificacion</td>
+                    <td>Editar</td>
+
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@code {
+    List<TareaE>? listaTareas = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //listaTareas = await tareaService.Lista();
+    }
+
+    private async Task abrirModalCrear()
+    {
+        var opciones = new ModalOptions()
+            {
+                DisableBackgroundCancel = true,
+                HideCloseButton = true,
+            };
+        var form = modal.Show<Tarea>("Ingresar Tarea", opciones);
+        var result = await form.Result;
+
+    }
+    private async Task abrirModalConsultar()
+    {
+        var opciones = new ModalOptions()
+            {
+                DisableBackgroundCancel = true,
+                HideCloseButton = true,
+            };
+        var form = modal.Show<Tarea>("Consultar Tarea", opciones);
+        var result = await form.Result;
+
+    }
+
+    private async Task abrirModalEditar()
+    {
+        var opciones = new ModalOptions()
+            {
+                DisableBackgroundCancel = true,
+                HideCloseButton = true,
+            };
+        var form = modal.Show<Tarea>("Modificar Tarea", opciones);
+        var result = await form.Result;
+
+    }
+}

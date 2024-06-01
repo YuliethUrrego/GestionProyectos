@@ -1,0 +1,66 @@
+﻿@page "/usuarioproyecto"
+
+@using GestionProyectos.Shared.Entities;
+@using GestionProyectos.Client.Services;
+
+@inject IModalService modal;
+@inject IUsuario usuarioService;
+@inject NavigationManager navegacion;
+
+<EditForm Model="usuario" OnValidSubmit="OnValidSubmit" class="modal-personalizado">
+
+    <div>
+        <label class="form-label">Usuario</label>
+        <InputSelect class="form-control" @bind-Value="usuario.PersonaId">
+            <option value="0">-- Seleccionar</option>
+            @foreach (var item in listaUsuario)
+            {
+                <option value="@item.PersonaId">@item.PersonaE?.Nombre</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => usuario.PersonaId)"></ValidationMessage>
+    </div>
+    @* TODO:Modificar para cambiar de usuario a proyecto *@
+    <div>
+        <label class="form-label">Proyecto</label>
+        <InputSelect class="form-control" @bind-Value="usuario.PersonaId">
+            <option value="0">-- Seleccionar</option>
+            @foreach (var item in listaUsuario)
+            {
+                <option value="@item.PersonaId">@item.PersonaE?.Nombre</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => usuario.PersonaId)"></ValidationMessage>
+    </div>
+
+    <div class="mt-4">
+
+        <button class="btn btn-warning w-50 btn-aceptar mr-4" type="submit">
+            ACEPTAR
+        </button>
+        <a class="btn btn-warning w-30 btn-cancelar" href="usuarios">CANCELAR</a>
+    </div>
+</EditForm>
+
+
+@code {
+    List<UsuarioE>? listaUsuario = new List<UsuarioE>();
+    UsuarioE usuario = new UsuarioE { PersonaE = new PersonaE() };
+    // ProyectoE proyecto = new ProyectoE();
+
+    protected override async Task OnInitializedAsync()
+    {
+        listaUsuario = await usuarioService.Lista();
+    }
+
+    private async Task OnValidSubmit()
+    {
+        string idDevuelto = null;
+
+        // TODO: guardar el usuario
+        /*idDevuelto = await usuarioService.Editar(actor);*/
+
+        navegacion.NavigateTo("/usuarios");
+    }
+
+}

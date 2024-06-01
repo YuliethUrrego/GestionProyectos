@@ -1,0 +1,50 @@
+﻿@page "/usuariorol"
+
+@using GestionProyectos.Shared.Entities;
+@using GestionProyectos.Client.Services;
+
+@inject IModalService modal;
+@inject IUsuario usuarioService;
+@* @inject IRol rolService; *@
+@inject NavigationManager navegacion;
+
+<EditForm Model="rol" OnValidSubmit="OnValidSubmit" class="modal-personalizado">
+
+@*     <div>
+        <label class="form-label">Nombre</label>
+        <InputText class="form-control" @bind-Value="rol.Nombre" placeholder="Ingrese el nombre completo"></InputText>
+        <ValidationMessage For="@(() => rol.Nombre)"></ValidationMessage>
+    </div>
+    
+    <div>
+        <label class="form-label">Email</label>
+        <InputText class="form-control" @bind-Value="rol.Descripcion" placeholder="Ingrese la descripción del rol"></InputText>
+        <ValidationMessage For="@(() => rol.Descripcion)"></ValidationMessage>
+    </div> *@
+
+    <div class="mt-4">
+
+        <button class="btn btn-warning w-50 btn-aceptar mr-4" type="submit">
+            ACEPTAR
+        </button>
+        <a class="btn btn-warning w-30 btn-cancelar" href="usuarios">CANCELAR</a>
+
+    </div>
+</EditForm>
+
+
+@code {
+    // RolE rol = new RolE();
+    string rol = "algo";
+
+    private async Task OnValidSubmit()
+    {
+        string idDevuelto = null;
+
+        // TODO: guardar el eol
+        /*idDevuelto = await usuarioService.Editar(actor);*/
+
+        navegacion.NavigateTo("/usuarios");
+    }
+
+}

@@ -21,5 +21,7 @@ namespace GestionProyectos.Shared.Entities
         public DateOnly? FechaCreacion { get; set; }
 
         public int? Estado { get; set; }
+
+        public AdministradorE? Administrador { get; set; }
     }
 }

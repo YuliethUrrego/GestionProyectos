@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GestionProyectos.Shared.Entities
@@ -17,5 +18,7 @@ namespace GestionProyectos.Shared.Entities
         public string? TipoDoc { get; set; }
 
         public byte[]? Contenido { get; set; }
+
+        public TareaE? Tarea { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestionProyectos.Shared.Entities
 {
-    public class AdministradorE 
+    public class AdministradorE
     {
         public int AdministradorId { get; set; }
 
@@ -18,6 +18,8 @@ namespace GestionProyectos.Shared.Entities
 
         public string? Telefono { get; set; }
 
-        public string? EmailEmpresa { get; set; }
+        public string? EmailEmpresa { get; set; } 
+
+        public PersonaE? Persona { get; set; }
     }
 }

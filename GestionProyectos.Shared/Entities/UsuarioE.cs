@@ -12,10 +12,10 @@ namespace GestionProyectos.Shared.Entities
 
         public int? PersonaId { get; set; }
 
-        //public int? RolId { get; set; }
+        public int? RolId { get; set; }
 
-        public virtual PersonaE? PersonaE { get; set; }
+        public virtual PersonaE? Persona { get; set; }
 
-        //public virtual Rol? Rol { get; set; }
+        public virtual RolE? Rol { get; set; }
     }
 }

@@ -13,11 +13,6 @@
 <EditForm Model="tarea" OnValidSubmit="OnValidSubmit" class="modal-personalizado">
     <div>
         <label class="form-label">Proyecto</label>
-        <InputText class="form-control" @bind-Value="tarea.Proyecto.Nombre" placeholder="Ingrese el proyecto"></InputText>
-        <ValidationMessage For="@(() => tarea.Descripcion)"></ValidationMessage>
-    </div>
-    <div>
-        <label class="form-label">Proyecto</label>
         <InputSelect class="form-control" @bind-Value="tarea.ProyectoId">
             <option value="">Seleccionar un proyecto</option>
             @foreach (var item in listaProyectos)

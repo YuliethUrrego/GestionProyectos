@@ -10,33 +10,33 @@
 <EditForm Model="usuario" OnValidSubmit="OnValidSubmit" class="modal-personalizado">
     <div>
         <label class="form-label">Nombre</label>
-        <InputText class="form-control" @bind-Value="usuario.PersonaE.Nombre" placeholder="Ingrese el nombre completo"></InputText>
-        <ValidationMessage For="@(() => usuario.PersonaE.Nombre)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="usuario.Persona.Nombre" placeholder="Ingrese el nombre completo"></InputText>
+        <ValidationMessage For="@(() => usuario.Persona.Nombre)"></ValidationMessage>
     </div>
     <div>
         <label class="form-label">Tipo identificación</label>
-        <InputSelect class="form-control" @bind-Value="usuario.PersonaE.TipoIdentificacion">
+        <InputSelect class="form-control" @bind-Value="usuario.Persona.TipoIdentificacion">
             <option value="">Seleccione un tipo de identificación</option>
             <option value=1> Cedula </option>
             <option value=2> Pasaporte </option>
             <option value=3> RUC </option>
         </InputSelect>
-        <ValidationMessage For="@(() => usuario.PersonaE.TipoIdentificacion)"></ValidationMessage>
+        <ValidationMessage For="@(() => usuario.Persona.TipoIdentificacion)"></ValidationMessage>
     </div>
     <div>
         <label class="form-label">Nro identificación</label>
-        <InputNumber class="form-control" @bind-Value="usuario.PersonaE.Cedula" placeholder="Seleccione un tipo de identificación"></InputNumber>
-        <ValidationMessage For="@(() => usuario.PersonaE.Cedula)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="usuario.Persona.Cedula" placeholder="Seleccione un tipo de identificación"></InputNumber>
+        <ValidationMessage For="@(() => usuario.Persona.Cedula)"></ValidationMessage>
     </div>
     <div>
         <label class="form-label">Email</label>
-        <InputText class="form-control" @bind-Value="usuario.PersonaE.Email" placeholder="Ingrese el email"></InputText>
-        <ValidationMessage For="@(() => usuario.PersonaE.Email)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="usuario.Persona.Email" placeholder="Ingrese el email"></InputText>
+        <ValidationMessage For="@(() => usuario.Persona.Email)"></ValidationMessage>
     </div>
     <div>
         <label class="form-label">Contraseña</label>
-        <InputText class="form-control" @bind-Value="usuario.PersonaE.Contrasenia" placeholder="Ingrese la contraseña"></InputText>
-        <ValidationMessage For="@(() => usuario.PersonaE.Contrasenia)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="usuario.Persona.Contrasenia" placeholder="Ingrese la contraseña"></InputText>
+        <ValidationMessage For="@(() => usuario.Persona.Contrasenia)"></ValidationMessage>
     </div>
     @* <div>
         <label class="form-label">Rol</label>
@@ -55,7 +55,7 @@
 
 @code {
 
-    UsuarioE usuario = new UsuarioE { PersonaE = new PersonaE() };
+    UsuarioE usuario = new UsuarioE { Persona = new PersonaE() };
 
     private async Task OnValidSubmit()
     {

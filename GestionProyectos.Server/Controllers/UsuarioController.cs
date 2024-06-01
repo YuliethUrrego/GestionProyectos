@@ -33,7 +33,7 @@ namespace GestionProyectos.Server.Controllers
                     {
                         UsuarioId = bdUsuarios.UsuarioId,
                         PersonaId = bdUsuarios.PersonaId,
-                        PersonaE = new PersonaE
+                        Persona = new PersonaE
                         {
                             PersonaId = bdUsuarios.Persona.PersonaId,
                             Nombre = bdUsuarios.Persona.Nombre,

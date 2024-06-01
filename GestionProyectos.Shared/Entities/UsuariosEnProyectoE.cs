@@ -15,5 +15,9 @@ namespace GestionProyectos.Shared.Entities
         public int? ProyectoId { get; set; }
 
         public DateOnly? Fecha { get; set; }
+
+        public ProyectoE? Proyecto { get; set; }
+
+        public UsuarioE? Usuario { get; set; }
     }
 }

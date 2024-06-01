@@ -15,7 +15,7 @@
             <option value="0">-- Seleccionar</option>
             @foreach (var item in listaUsuario)
             {
-                <option value="@item.PersonaId">@item.PersonaE?.Nombre</option>
+                <option value="@item.PersonaId">@item.Persona?.Nombre</option>
             }
         </InputSelect>
         <ValidationMessage For="@(() => usuario.PersonaId)"></ValidationMessage>
@@ -27,7 +27,7 @@
             <option value="0">-- Seleccionar</option>
             @foreach (var item in listaUsuario)
             {
-                <option value="@item.PersonaId">@item.PersonaE?.Nombre</option>
+                <option value="@item.PersonaId">@item.Persona?.Nombre</option>
             }
         </InputSelect>
         <ValidationMessage For="@(() => usuario.PersonaId)"></ValidationMessage>
@@ -45,7 +45,7 @@
 
 @code {
     List<UsuarioE>? listaUsuario = new List<UsuarioE>();
-    UsuarioE usuario = new UsuarioE { PersonaE = new PersonaE() };
+    UsuarioE usuario = new UsuarioE { Persona = new PersonaE() };
     // ProyectoE proyecto = new ProyectoE();
 
     protected override async Task OnInitializedAsync()

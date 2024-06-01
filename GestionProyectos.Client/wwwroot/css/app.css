@@ -135,5 +135,63 @@ code {
 }
 .espaciar{
     margin-right: 10px;
-    color: #ffffff;
 }
+
+/* ****** INICIO DE SESIÓN ***** */
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FEAF00;
+}
+.login-container {
+    width: 450px;
+    margin: auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+    .login-container h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .login-container h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .login-container .form-group {
+        margin-bottom: 1rem;
+        text-align: start;
+    }
+
+    .login-container .form-control {
+        width: 100%;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+    }
+
+    .login-container .btn-primary {
+        background-color: #f0ad4e;
+        border: none;
+        width: 100%;
+        padding: 0.75rem;
+        color: #000000;
+        font-size: 1rem;
+        border-radius: 5px;
+        margin: 15px 0px;
+    }
+
+    .login-container a {
+        color: #f0ad4e;
+        text-decoration: none;
+    }
+
+        .login-container a:hover {
+            text-decoration: underline;
+        }

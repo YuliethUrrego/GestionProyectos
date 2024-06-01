@@ -1,0 +1,61 @@
+﻿@page "/registro"
+
+@using GestionProyectos.Shared.Entities;
+@using GestionProyectos.Client.Services;
+
+@inject IAdministrador administradorService;
+
+<PageTitle>Registro</PageTitle>
+
+<EditForm Model="adminModel" OnValidSubmit="HandleValidSubmit">
+    <div class="register-container">
+        <h2>Gestión de proyectos</h2>
+        <h3>REGISTRO DE ADMINISTRADOR DE PROYECTOS</h3>
+        <div class="form-section">
+            <div class="personal-info">
+                <h4>INFORMACIÓN PERSONALES</h4>
+                <InputText @bind-Value="adminModel.Nombre" placeholder="Ingrese nombre completo" />
+                <InputSelect @bind-Value="adminModel.TipoIdentificacion">
+                    <option value="">Seleccione un tipo de identificación</option>
+                    <!-- Agrega más opciones según sea necesario -->
+                </InputSelect>
+                <InputText @bind-Value="adminModel.NoIdentificacion" placeholder="Ingrese el número de identificación" />
+                <InputText @bind-Value="adminModel.Email" placeholder="Ingrese su email" />
+                <InputText @bind-Value="adminModel.Contrasena" placeholder="Ingrese su contraseña" type="password" />
+                <InputDate @bind-Value="adminModel.AnioNacimiento" placeholder="Elija una fecha" />
+            </div>
+            <div class="business-info">
+                <h4>INFORMACIÓN EMPRESARIAL</h4>
+                <InputText @bind-Value="adminModel.RazonSocial" placeholder="Ingrese la razón social" />
+                <InputText @bind-Value="adminModel.NIT" placeholder="Ingrese el NIT de la empresa" />
+                <InputText @bind-Value="adminModel.EmailEmpresa" placeholder="Ingrese su email empresarial" />
+                <InputText @bind-Value="adminModel.Telefono" placeholder="Ingrese el teléfono empresarial" />
+            </div>
+        </div>
+        <button type="submit">REGISTRARSE</button>
+    </div>
+</EditForm>
+
+@code {
+    private AdminModel adminModel = new AdminModel();
+
+    private void HandleValidSubmit()
+    {
+        // Lógica para manejar el envío del formulario
+    }
+
+    public class AdminModel
+    {
+        public string Nombre { get; set; }
+        public string TipoIdentificacion { get; set; }
+        public string NoIdentificacion { get; set; }
+        public string Email { get; set; }
+        public string Contrasena { get; set; }
+        public DateTime AnioNacimiento { get; set; }
+        public string RazonSocial { get; set; }
+        public string NIT { get; set; }
+        public string EmailEmpresa { get; set; }
+        public string Telefono { get; set; }
+    }
+}
+

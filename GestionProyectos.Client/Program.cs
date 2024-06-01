@@ -14,6 +14,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://
 builder.Services.AddScoped<IUsuario, UsuarioService>();
 builder.Services.AddScoped<IProyecto, ProyectoService>();
 builder.Services.AddScoped<ITarea, TareaService>();
+builder.Services.AddScoped<IAdministrador, AdministradorService>();
 
 builder.Services.AddSweetAlert2();
 builder.Services.AddBlazoredModal();
